@@ -66,21 +66,21 @@ def get_wifi_info():
     except:
         return "Unknown", "N/A"
 
-location_name = input("📍 Enter your current location: ")
+location_name = input("Enter your current location: ")
 
 connection_type, wifi_name = get_wifi_info()
-print(f"🌐 Connection: {connection_type}")
+print(f"Connection: {connection_type}")
 if wifi_name != "N/A":
-    print(f"📶 WiFi Network: {wifi_name}")
+    print(f"WiFi Network: {wifi_name}")
 
-print("🚀 Running speed test...")
+print("Running speed test...")
 st = speedtest.Speedtest()
 st.get_best_server()
 download_speed = st.download() / 1_000_000
 upload_speed = st.upload() / 1_000_000
 
-print(f"⬇️  Download: {download_speed:.2f} Mbps")
-print(f"⬆️  Upload: {upload_speed:.2f} Mbps")
+print(f"Download: {download_speed:.2f} Mbps")
+print(f"Upload: {upload_speed:.2f} Mbps")
 
 data = {
     "location_name": location_name,
@@ -92,4 +92,4 @@ data = {
 }
 
 response = supabase.table("speed_log").insert(data).execute()
-print("✅ Data saved successfully!")
+print("Data saved successfully!")

@@ -22,4 +22,4 @@ data = {
 }
 
 response = supabase.table("speed_log").insert(data).execute()
-print("✅ Data saved to Supabase")
+print("Data saved to Supabase")
