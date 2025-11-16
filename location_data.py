@@ -13,6 +13,10 @@ if response.data:
     for record in response.data:
         print(f"⬇️  Download: {record['download_mbps']:.2f} Mbps")
         print(f"⬆️  Upload: {record['upload_mbps']:.2f} Mbps")
+        if record.get('connection_type'):
+            print(f"🌐 Connection: {record['connection_type']}")
+        if record.get('wifi_network') and record['wifi_network'] != 'N/A':
+            print(f"📶 WiFi: {record['wifi_network']}")
         print(f"🕐 Time: {record['timestamp'][:19]}")
         print("-" * 30)
     
